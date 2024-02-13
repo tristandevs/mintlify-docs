@@ -1,71 +1,101 @@
 ---
 title: Introduction
-description: 'Welcome to the home of your new documentation'
+description: 'Welcome to ShuttleAI API Docs'
 ---
 
-<img
-  className="block dark:hidden"
-  src="/images/hero-light.svg"
-  alt="Hero Light"
-/>
-<img
-  className="hidden dark:block"
-  src="/images/hero-dark.svg"
-  alt="Hero Dark"
-/>
+You can interact with the API through HTTP requests from any language, or from our [official python library](https://pypi.org/project/shuttleai).
 
-## Setting up
+To get started with using the official Python library, read below:
 
-The first step to world-class documentation is setting up your editing environments.
+## Installation
 
-<CardGroup cols={2}>
-  <Card
-    title="Edit Your Docs"
-    icon="pen-to-square"
-    href="https://mintlify.com/docs/quickstart"
-  >
-    Get your docs set up locally for easy development
-  </Card>
-  <Card
-    title="Preview Changes"
-    icon="image"
-    href="https://mintlify.com/docs/development"
-  >
-    Preview your changes before you push to make sure they're perfect
-  </Card>
-</CardGroup>
+> We highly recommend using the async client instead of synchronous.
 
-## Make it yours
+```sh
+pip install -U shuttleai
+```
+### Usage
+```py
+from shuttleai import *
 
-Update your docs to your brand and add valuable content for the best user conversion.
+SHUTTLE_KEY = "ShuttleAPI Key"
 
-<CardGroup cols={2}>
-  <Card
-    title="Customize Style"
-    icon="palette"
-    href="https://mintlify.com/docs/settings/global"
-  >
-    Customize your docs to your company's colors and brands
-  </Card>
-  <Card
-    title="Reference APIs"
-    icon="code"
-    href="https://mintlify.com/docs/api-playground/openapi"
-  >
-    Automatically generate endpoints from an OpenAPI spec
-  </Card>
-  <Card
-    title="Add Components"
-    icon="screwdriver-wrench"
-    href="https://mintlify.com/docs/components/accordion"
-  >
-    Build interactive features and designs to guide your users
-  </Card>
-  <Card
-    title="Get Inspiration"
-    icon="stars"
-    href="https://mintlify.com/showcase"
-  >
-    Check out our showcase of our favorite documentation
-  </Card>
-</CardGroup>
+async def main():
+    async with ShuttleAsyncClient(SHUTTLE_KEY, timeout=60) as shuttle:
+        """Optionally change base url"""
+        # shuttle.base_url = "https://api.shuttleai.app/v1"
+
+        """Get Models Example"""
+        # response = await shuttle.get_models()
+        # print(response)
+        """Get Model Example"""
+        # response = await shuttle.get_model("gpt-4")
+        # print(response)
+        """Streaming Example"""
+        # response = await shuttle.chat_completion(
+        #     model="gpt-3.5-turbo",
+        #     messages="write me a short story about bees",
+        #     stream=True,
+        #     plain=True,
+        #     internet=False
+        # )
+        # async for chunk in response:
+        #     try:
+        #         print(chunk['choices'][0]['delta']['content'])
+        #     except:
+        #         pass
+        """Non-Streaming Example"""
+        # response = await shuttle.chat_completion(
+        #     model="gpt-3.5-turbo",
+        #     messages=[{"role":"user","content":"write me a short story about bees"}],
+        #     stream=False,
+        #     plain=False,
+        #     internet=False,
+        #     max_tokens=100,
+        #     temperature=0.5,
+        #     image="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
+        # )
+        # print(response)
+        """Image Generation Example"""
+        # response = await shuttle.images_generations(
+        #     model='sdxl',
+        #     prompt='a cute cat',
+        #     n=1,
+        # )
+        # print(response)
+        """Audio Generation Example"""
+        # response = await shuttle.audio_generations(
+        #     model='eleven-labs-999',
+        #     input='Once upon a time, there was a cute cat wondering through a dark, cold forest.',
+        #     voice="mimi"
+        # )
+        # print(response)
+        """Audio Transcription Example"""
+        # response = await shuttle.audio_transcriptions(
+        #     model='whisper-large',
+        #     file="test.mp3"
+        # )
+        # print(response)
+        """Moderation Example"""
+        # response = await shuttle.moderations(
+        #     model='text-moderation-007',
+        #     input="I hate you"
+        # )
+        # print(response)
+        """Embeddings Example"""
+        # response = await shuttle.embeddings(
+        #     model='text-embedding-ada-002',
+        #     input="Hello there world"
+        # )
+        # print(response)
+
+
+if __name__ == "__main__":
+    import asyncio
+    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+    asyncio.run(main())
+```
+
+Don't use Python or want to see behind the scenes?
+
+Continue to [Authentication](/Authentication)!
