@@ -25,12 +25,6 @@
     "name": "Discord",
     "url": "https://discord.com/invite/shuttleai"
   },
-  "tabs": [
-    {
-      "name": "API Reference",
-      "url": "api-reference"
-    }
-  ],
   "navigation": [
     {
       "group": "Getting Started",
@@ -39,18 +33,6 @@
         "authentication",
         "making-requests",
         "streaming"
-      ]
-    },
-    {
-      "group": "Endpoints",
-      "pages": [
-        "chat",
-        "image",
-        "audio",
-        "moderation",
-        "embedding",
-        "joke",
-        "insult"
       ]
     },
     {
