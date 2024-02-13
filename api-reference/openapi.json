@@ -24,12 +24,19 @@
         "description": "Returns all models from ShuttleAI",
         "parameters": [
           {
-            "name": "limit",
+            "name": "endpoints",
             "in": "query",
-            "description": "The maximum number of results to return",
+            "description": "Filters the models by the endpoints",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "description": "The format of the response > Valid options: `names`, `paid`, `free`.",
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -282,7 +289,11 @@
                   "prompt": {
                     "type": "string"
                   }
-                }
+                },
+                "required": [
+                  "model",
+                  "prompt"
+                ]
               }
             }
           }
@@ -329,10 +340,18 @@
                   "model": {
                     "type": "string"
                   },
-                  "prompt": {
+                  "input": {
                     "type": "string"
+                  },
+                  "voice": {
+                    "type": "string",
+                    "description": "The voice to use for the generation > Voices can be found [here](https://api.shuttleai.app/v1/models)"
                   }
-                }
+                },
+                "required": [
+                  "model",
+                  "input"
+                ]
               }
             }
           }
@@ -378,14 +397,22 @@
         "description": "Returns an `audio.transcription` object with the generated transcription.",
         "requestBody": {
           "content": {
-            "application/json": {
+            "multipart/form-data": {
               "schema": {
                 "type": "object",
                 "properties": {
-                  "audio_url": {
-                    "type": "string"
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "model": {
+                    "type": "string",
+                    "description": "Defaults to `whisper-large`. The id of the model to use for the transcription"
                   }
-                }
+                },
+                "required": [
+                  "file"
+                ]
               }
             }
           }
@@ -418,10 +445,17 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "content": {
+                  "input": {
                     "type": "string"
+                  },
+                  "model": {
+                    "type": "string",
+                    "description": "Defaults to `text-moderation-stable`. The id of the model to use for the moderation"
                   }
-                }
+                },
+                "required": [
+                  "input"
+                ]
               }
             }
           }
@@ -471,10 +505,27 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "text": {
+                  "model": {
                     "type": "string"
+                  },
+                  "input": {
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    ]
                   }
-                }
+                },
+                "required": [
+                  "model",
+                  "input"
+                ]
               }
             }
           }
