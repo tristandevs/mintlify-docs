@@ -32,7 +32,8 @@
         "introduction",
         "authentication",
         "making-requests",
-        "streaming"
+        "streaming",
+        "tool-calling"
       ]
     },
     {

@@ -1,0 +1,93 @@
+Tool Calling *(previously Function Calling)* is a great way to introduce ShuttleAI into your project seamlessly.
+
+Tool calling gives you the ability to give the model certain information about a function and the model will choose how to use that information to generate a function-ready formatted respnse for you automatically.
+
+<Tip>Note: Not all models are trained with tool calling data, only the following are capable of this feature: `gemini-pro`, `gpt-3.5-turbo`, `gpt-4-0613`, `gpt-3.5-turbo-1106`, `gpt-3.5-turbo-0613`</Tip>
+
+# What is a Tool?
+
+Currently there is only one `type` of tool, a "function"; this is subject to change in the future.
+
+A "function" lets you give certain information of your function and its requiremnts, and then receive a formatted response ready for that function.
+
+# What would a Tool like?
+
+Below we have a basic tool utilizing our `get_current_weather` function
+
+```py
+tools = [
+    {
+        "type": "function",
+        "function": {
+            "name": "get_current_weather",
+            "description": "Get the current weather in a given location",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "location": {
+                        "type": "string",
+                        "description": "The city and state, e.g. San Francisco, CA",
+                    },
+                    "unit": {"type": "string", "enum": ["celsius", "fahrenheit"]},
+                },
+                "required": ["location"],
+            },
+        },
+    }
+]
+```
+
+Lets also make the function that we will call as well:
+> Keep in mind this is a basic example implementation and you would need to use your own weather to get accurate results yourself.
+
+```py
+def get_current_weather(location: str, "unit": str = "fahrenheit"):
+    return get_weather_for(location=location, unit=unit)
+```
+
+Now that we have our tools and functions set up, lets make our request:
+
+```py
+from shuttleai import *
+
+...
+response = await shuttle.chat_completion(
+    model="gemini-pro",
+    messages=[{"role": "user", "content": "What is the current weather like in Los Angeles California?"}],
+    tools=tools,
+    tool_choice="auto"
+)
+print(response)
+...
+```
+
+This will result in something similar to the following:
+<Tip>ShuttleAI supports both Parallel Tool Calling and Streamed Tool Calling!</Tip>
+
+```py
+{
+    "choices": [
+        {
+            ...
+            "finish_reason": "tool_calls",
+            "message": {
+                "content": null,
+                "role": "assistant",
+                "tool_calls": [
+                    {
+                        "function": {
+                            "arguments": "{\"location\":\"Los Angeles, CA\"}",
+                            "name": "get_current_weather"
+                        },
+                        "id": "call_3GjyYbPEskNsP67fkjyXjI1g",
+                        "type": "function"
+                    }
+                ]
+            }
+        }
+    ],
+    ...
+}
+```
+
+With this response, we can easily use Python's built in `json` module with `import json` and using `json.loads(response['choices'][0]['tool_calls']['function']['arguments'])` to get the required properties for your function.
