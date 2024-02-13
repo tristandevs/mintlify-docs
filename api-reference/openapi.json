@@ -507,6 +507,15 @@
     "/v1/joke": {
       "get": {
         "description": "Returns a random joke.",
+        "parameters": [{
+          "name": "n",
+          "in": "query",
+          "description": "Defaults to `1`. The number of jokes to return - Maximum of `4`",
+          "required": false,
+          "schema": {
+            "type": "number"
+          }
+        }],
         "responses": {
           "200": {
             "description": "Model response",
@@ -515,8 +524,13 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "joke": {
-                      "type": "string"
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "joke": {
+                          "type": "string"
+                        }
+                      }
                     }
                   }
                 }
@@ -529,6 +543,15 @@
     "/v1/insult": {
       "get": {
         "description": "Returns a random insult.",
+        "parameters": [{
+          "name": "n",
+          "in": "query",
+          "description": "Defaults to `1`. The number of insults to return - Maximum of `4`",
+          "required": false,
+          "schema": {
+            "type": "integer"
+          }
+        }],
         "responses": {
           "200": {
             "description": "Model response",
@@ -537,8 +560,13 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "insult": {
-                      "type": "string"
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "insult": {
+                          "type": "string"
+                        }
+                      }
                     }
                   }
                 }
