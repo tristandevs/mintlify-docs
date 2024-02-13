@@ -1,0 +1,30 @@
+### ShuttleAI Streaming
+
+
+The ShuttleAI API provides the ability to stream responses back to a client in order to allow partial results for certain requests. To achieve this, we follow the Server-sent events standard.
+
+Our official [Python Library](https://pypi.org/project/shuttleai) handles Server-sent events for you. In Python, a streaming request looks like:
+
+```python
+import asyncio
+from shuttleai import *
+
+async def main():
+    async with ShuttleAsyncClient($SHUTTLEAI_API_KEY, timeout=60) as shuttle:
+         response = await shuttle.chat_completion(
+             model="gpt-4",
+             messages="write me a short story about bees",
+             stream=True,
+             plain=True
+         )
+         async for chunk in response:
+             try:
+                 print(chunk['choices'][0]['delta']['content'])
+             except:
+                 pass
+
+
+if __name__ == "__main__":
+    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+    asyncio.run(main())
+```
