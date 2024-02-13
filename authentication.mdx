@@ -3,6 +3,25 @@ You may get a **FREE** ShuttleAI API key by performing the `/getkey` command in 
 All API requests should include your API key in an Authorization HTTP header as follows:
 
 > Remember that your API key is a secret! Do not share your key with anyone!
-```javascript ShuttleAI API Authorization
+
+<CodeGroup>
+
+```javascript HTTP ShuttleAI API Auth
 Authorization: Bearer SHUTTLEAI_API_KEY
 ```
+
+```python Lib ShuttleAI API Auth
+from shuttleai import *
+
+"""Synchronous"""
+shuttle = ShuttleClient("SHUTTLEAI_API_KEY")
+
+# OR
+
+"""Asynchronous"""
+async with ShuttleAsyncClient("SHUTTLEAI_API_KEY") as shuttle:
+```
+
+</CodeGroup>
+
+<Tip>Remember! We recommend you to ALWAYS use the Asynchronous client over the Synchronous client.</Tip>

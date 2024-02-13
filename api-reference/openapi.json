@@ -27,7 +27,7 @@
           {
             "name": "endpoints",
             "in": "query",
-            "description": "Filters the models by the endpoints",
+            "description": "Filters the models by the endpoints, (e.g /v1/images/generations)",
             "schema": {
               "type": "string"
             }
@@ -35,7 +35,7 @@
           {
             "name": "format",
             "in": "query",
-            "description": "The format of the response > Valid options: `names`, `paid`, `free`.",
+            "description": "The format of the response > Valid options: `names`, `premium`, `free`.",
             "schema": {
               "type": "string"
             }
