@@ -5,8 +5,8 @@ The ShuttleAI API provides the ability to stream responses back to a client in o
 
 Our official [Python Library](https://pypi.org/project/shuttleai) handles Server-sent events for you. In Python, a streaming request looks like:
 
-```python
-import asyncio
+<CodeGroup>
+```python Python
 from shuttleai import *
 
 async def main():
@@ -25,6 +25,40 @@ async def main():
 
 
 if __name__ == "__main__":
+    import asyncio
     asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
     asyncio.run(main())
 ```
+
+```javascript JavaScript
+const axios = require('axios');
+
+async function main() {
+    try {
+        const response = await axios.post('https://api.shuttle.ai/chat_completion', {
+            model: 'gpt-4',
+            messages: [{role: 'user', content: 'write me a short story about bees'}],
+            stream: true
+        }, {
+            'Authorization': 'Bearer $SHUTTLEAI_API_KEY',
+            'Content-Type': 'application/json
+            }
+        );
+
+        if (response.data) {
+            response.data.forEach(chunk => {
+                try {
+                    console.log(chunk.choices[0].delta.content);
+                } catch (error) {
+                    // Handle error
+                }
+            });
+        }
+    } catch (error) {
+        // Handle error
+    }
+}
+
+main();
+```
+</CodeGroup>

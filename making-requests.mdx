@@ -1,6 +1,7 @@
 You can paste the command below into your terminal to run your first API request. Make sure to replace `$SHUTTLEAI_API_KEY` with your secret API key from our [discord](https://discord.gg/shuttleai).
 
-```bash
+<CodeGroup>
+```bash cURL
 curl https://api.shuttleai.app/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $SHUTTLEAI_API_KEY" \
@@ -11,6 +12,55 @@ curl https://api.shuttleai.app/v1/chat/completions \
      "max_tokens": 5
    }'
 ```
+
+```python Python
+from shuttleai import *
+
+async def main():
+    async with ShuttleAsyncClient($SHUTTLEAI_API_KEY, timeout=60) as shuttle:
+         response = await shuttle.chat_completion(
+             model="gpt-4",
+             messages=[{"role": "user", "content": "Say this is a test!"}],
+             temperature=0.7,
+             max_tokens=5
+         )
+         print(response['choices'][0]['message']['content'])
+
+
+if __name__ == "__main__":
+    import asyncio
+    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+    asyncio.run(main())
+```
+
+```javascript JavaScript
+const axios = require('axios');
+
+async function makeRequest() {
+  const url = 'https://api.shuttleai.app/v1/chat/completions';
+  const headers = {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer $SHUTTLEAI_API_KEY'
+  };
+  const data = {
+    model: 'gpt-4',
+    messages: [{ role: 'user', content: 'Say this is a test!' }],
+    temperature: 0.7,
+    max_tokens: 5
+  };
+
+  try {
+    const response = await axios.post(url, data, { headers });
+    console.log(response.data.choices[0].message.content);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+makeRequest();
+
+```
+</CodeGroup>
 
 This will call ShuttleAI's `gpt-4` model with certain kwargs set like `max_tokens` and `temperature`. Since we asked as a user to "Say this is a test!", we will receive a response similar to:
 ```json
@@ -46,4 +96,6 @@ Let's break down the response object; Since we inputted a `max_tokens` parameter
 - "tool_calls" (When the response delivered uses a tool call)
 - "length" (When `completion_tokens` meets or exceeds `max_tokens`)
 
-What if you want to receive each chunk of data as soon as it's ready for you? Check out streaming
+What if you want to receive each chunk of data as soon as it's ready for you?
+
+Check out [Streaming](/streaming)!
