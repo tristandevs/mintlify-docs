@@ -22,6 +22,7 @@
     "/v1/models": {
       "get": {
         "description": "Returns all models from ShuttleAI",
+        "security": [],
         "parameters": [
           {
             "name": "endpoints",
@@ -60,6 +61,7 @@
     "/v1/models/{id}": {
       "get": {
         "description": "Returns a single model from ShuttleAI",
+        "security": [],
         "parameters": [
           {
             "name": "id",
