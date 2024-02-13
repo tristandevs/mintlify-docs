@@ -202,6 +202,18 @@
                 "schema": {
                   "type": "object",
                   "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "object": {
+                      "type": "string"
+                    },
+                    "created": {
+                      "type": "integer"
+                    },
+                    "model": {
+                      "type": "string"
+                    },
                     "choices": {
                       "type": "array",
                       "items": {
@@ -229,6 +241,23 @@
                           }
                         }
                       }
+                    },
+                    "usage": {
+                      "type": "object",
+                      "properties": {
+                        "prompt_tokens": {
+                          "type": "integer"
+                        },
+                        "completion_tokens": {
+                          "type": "integer"
+                        },
+                        "total_tokens": {
+                          "type": "integer"
+                        }
+                      }
+                    },
+                    "system_fingerprint": {
+                      "type": "string"
                     }
                   }
                 }
@@ -316,8 +345,8 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "created": {
-                      "type": "number"
+                    "chars": {
+                      "type": "integer"
                     },
                     "data": {
                       "type": "array",
@@ -329,6 +358,12 @@
                           }
                         }
                       }
+                    },
+                    "expiresIn": {
+                      "type": "integer"
+                    },
+                    "model": {
+                      "type": "string"
                     }
                   }
                 }
@@ -363,7 +398,7 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "transcription": {
+                    "text": {
                       "type": "string"
                     }
                   }
@@ -399,8 +434,25 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "moderation_result": {
+                    "id": {
                       "type": "string"
+                    },
+                    "model": {
+                      "type": "string"
+                    },
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "flagged": {
+                          "type": "boolean"
+                        },
+                        "categories": {
+                          "type": "object"
+                        },
+                        "category_scores": {
+                          "type": "object"
+                        }
+                      }
                     }
                   }
                 }
@@ -435,11 +487,14 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "embeddings": {
-                      "type": "array",
-                      "items": {
-                        "type": "number"
-                      }
+                    "object": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array"
+                    },
+                    "model": {
+                      "type": "string"
                     }
                   }
                 }
