@@ -15,7 +15,8 @@ To get started with using the official Python library, read below:
 pip install -U shuttleai
 ```
 ### Usage
-```py
+<CodeGroup>
+```python Asynchronous
 from shuttleai import *
 
 SHUTTLE_KEY = "ShuttleAPI Key"
@@ -95,6 +96,20 @@ if __name__ == "__main__":
     asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
     asyncio.run(main())
 ```
+
+```python Synchronous
+from shuttleai import *
+
+shuttle = Shuttleclient("ShuttleAI_API_KEY")
+
+response = shuttle.chat_completion(
+            model="gpt-3.5-turbo",
+            messages=[{"role":"user","content":"write me a short story about bees"}],
+            stream=False
+         )
+print(response)
+```
+</CodeGroup>
 
 Don't use Python or want to see behind the scenes?
 

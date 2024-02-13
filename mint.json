@@ -31,26 +31,9 @@
       "url": "api-reference"
     }
   ],
-  "anchors": [
-    {
-      "name": "Documentation",
-      "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
-    },
-    {
-      "name": "Community",
-      "icon": "slack",
-      "url": "https://mintlify.com/community"
-    },
-    {
-      "name": "Blog",
-      "icon": "newspaper",
-      "url": "https://mintlify.com/blog"
-    }
-  ],
   "navigation": [
     {
-      "group": "Get Started",
+      "group": "Getting Started",
       "pages": [
         "introduction",
         "authentication",
@@ -59,28 +42,30 @@
       ]
     },
     {
-      "group": "Essentials",
+      "group": "Endpoints",
       "pages": [
-        "essentials/markdown",
-        "essentials/code",
-        "essentials/images",
-        "essentials/settings",
-        "essentials/navigation",
-        "essentials/reusable-snippets"
+        "chat",
+        "image",
+        "audio",
+        "moderation",
+        "embedding",
+        "joke",
+        "insult"
       ]
     },
     {
-      "group": "API Documentation",
+      "group": "Endpoints",
       "pages": [
-        "api-reference/introduction"
-      ]
-    },
-    {
-      "group": "Endpoint Examples",
-      "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
+        "api-reference/endpoint/models",
+        "api-reference/endpoint/model",
+        "api-reference/endpoint/chat-completion",
+        "api-reference/endpoint/images-generations",
+        "api-reference/endpoint/audio-generations",
+        "api-reference/endpoint/audio-transcriptions",
+        "api-reference/endpoint/moderations",
+        "api-reference/endpoint/embeddings",
+        "api-reference/endpoint/joke",
+        "api-reference/endpoint/insult"
       ]
     }
   ],

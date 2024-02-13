@@ -10,7 +10,7 @@
   },
   "servers": [
     {
-      "url": "http://sandbox.mintlify.com"
+      "url": "https://api.shuttleai.app"
     }
   ],
   "security": [
@@ -19,9 +19,9 @@
     }
   ],
   "paths": {
-    "/plants": {
+    "/v1/models": {
       "get": {
-        "description": "Returns all plants from the system that the user has access to",
+        "description": "Returns all models from ShuttleAI",
         "parameters": [
           {
             "name": "limit",
@@ -35,60 +35,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Plant response",
+            "description": "Model response",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Plant"
+                    "$ref": "#/components/schemas/Model"
                   }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "description": "Creates a new plant in the store",
-        "requestBody": {
-          "description": "Plant to add to the store",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/NewPlant"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "plant response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Plant"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
                 }
               }
             }
@@ -96,32 +50,442 @@
         }
       }
     },
-    "/plants/{id}": {
-      "delete": {
-        "description": "Deletes a single plant based on the ID supplied",
+    "/v1/models/{id}": {
+      "get": {
+        "description": "Returns a single model from ShuttleAI",
         "parameters": [
           {
             "name": "id",
             "in": "path",
-            "description": "ID of plant to delete",
             "required": true,
             "schema": {
-              "type": "integer",
-              "format": "int64"
+              "type": "string"
             }
           }
         ],
         "responses": {
-          "204": {
-            "description": "Plant deleted",
-            "content": {}
-          },
-          "400": {
-            "description": "unexpected error",
+          "200": {
+            "description": "Model response",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "$ref": "#/components/schemas/Model"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/chat/completions": {
+      "post": {
+        "description": "Returns a `chat.completion` object with the generated response.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "model": {
+                    "description": "The id of the model to use for the generation",
+                    "type": "string"
+                  },
+                  "messages": {
+                    "type": "array",
+                    "description": "The list of messages to generate a response for. The last message is the prompt.",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "role": {
+                          "type": "string"
+                        },
+                        "content": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "max_tokens": {
+                    "type": "integer",
+                    "description": "The maximum number of tokens to generate"
+                  },
+                  "temperature": {
+                    "type": "number",
+                    "description": "The temperature of the sampling distribution"
+                  },
+                  "top_p": {
+                    "type": "number",
+                    "description": "The cumulative probability of the top tokens to keep in the nucleus of the distribution"
+                  },
+                  "tools": {
+                    "type": "array",
+                    "description": "The list of tools to use for the generation",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string"
+                        },
+                        "function": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string"
+                            },
+                            "parameters": {
+                              "type": "object"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "tool_choice": {
+                    "oneOf": [
+                      {
+                        "type": "string",
+                        "description": "Defaults to `auto` for automatic tool choice"
+                      },
+                      {
+                        "type": "object",
+                        "description": "The tool choice object",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "internet": {
+                    "type": "boolean",
+                    "description": "Whether to use the internet for the generation > Model limitations apply"
+                  },
+                  "citations": {
+                    "type": "boolean",
+                    "description": "Whether to include citations in the generation > For use in `owned_by: bing/openai` models only!"
+                  },
+                  "tone": {
+                    "type": "string",
+                    "description": "The tone of the generation > For use in `owned_by: bing/openai` models only!"
+                  },
+                  "raw": {
+                    "type": "boolean",
+                    "description": "Whether to return the raw response > For use in `owned_by: bing/openai` models only! Returns Bing AI Suggestions and Search Results!"
+                  },
+                  "image": {
+                    "oneOf": [
+                      {
+                        "type": "string",
+                        "description": "The url of the image to use for the generation > Model limitations apply"
+                      },
+                      {
+                        "type": "boolean",
+                        "description": "Automatically get image url from last message in messages provided if `true`"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "model",
+                  "messages"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Model response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "choices": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "index": {
+                            "type": "integer"
+                          },
+                          "logprobs": {
+                            "type": "object"
+                          },
+                          "finish_reason": {
+                            "type": "string"
+                          },
+                          "message": {
+                            "type": "object",
+                            "properties": {
+                              "content": {
+                                "type": "string"
+                              },
+                              "role": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/images/generations": {
+      "post": {
+        "description": "Returns a `image.generation` object with the generated image.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "model": {
+                    "type": "string"
+                  },
+                  "prompt": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Model response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "created": {
+                      "type": "number"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "url": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/audio/generations": {
+      "post": {
+        "description": "Returns an `audio.generation` object with the generated audio.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "model": {
+                    "type": "string"
+                  },
+                  "prompt": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Model response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "created": {
+                      "type": "number"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "url": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/audio/transcriptions": {
+      "post": {
+        "description": "Returns an `audio.transcription` object with the generated transcription.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "audio_url": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Model response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "transcription": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/moderations": {
+      "post": {
+        "description": "Returns a `moderation` object with the analysis result.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "content": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Model response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "moderation_result": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/embeddings": {
+      "post": {
+        "description": "Returns an `embedding` object with the embeddings.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "text": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Model response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "embeddings": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/joke": {
+      "get": {
+        "description": "Returns a random joke.",
+        "responses": {
+          "200": {
+            "description": "Model response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "joke": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/insult": {
+      "get": {
+        "description": "Returns a random insult.",
+        "responses": {
+          "200": {
+            "description": "Model response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "insult": {
+                      "type": "string"
+                    }
+                  }
                 }
               }
             }
@@ -132,41 +496,47 @@
   },
   "components": {
     "schemas": {
-      "Plant": {
+      "Model": {
         "required": [
           "name"
         ],
         "type": "object",
         "properties": {
-          "name": {
-            "description": "The name of the plant",
+          "object": {
+            "description": "The name of the model",
             "type": "string"
           },
-          "tag": {
-            "description": "Tag to specify the type",
-            "type": "string"
-          }
-        }
-      },
-      "NewPlant": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/Plant"
-          },
-          {
-            "required": [
-              "id"
-            ],
-            "type": "object",
-            "properties": {
-              "id": {
-                "description": "Identification number of the plant",
-                "type": "integer",
-                "format": "int64"
+          "data": {
+            "description": "The list of model objects.",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "object": {
+                  "type": "string"
+                },
+                "owned_by": {
+                  "type": "string"
+                },
+                "tokens": {
+                  "type": "integer"
+                },
+                "cost": {
+                  "type": "integer"
+                },
+                "premium": {
+                  "type": "boolean"
+                },
+                "created": {
+                  "type": "integer"
+                }
               }
             }
           }
-        ]
+        }
       },
       "Error": {
         "required": [
