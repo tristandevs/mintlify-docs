@@ -33,7 +33,8 @@
         "authentication",
         "making-requests",
         "streaming",
-        "tool-calling"
+        "tool-calling",
+        "implementing-web-access"
       ]
     },
     {
@@ -48,7 +49,8 @@
         "api-reference/endpoint/moderations",
         "api-reference/endpoint/embeddings",
         "api-reference/endpoint/joke",
-        "api-reference/endpoint/insult"
+        "api-reference/endpoint/insult",
+        "api-reference/endpoint/web-search"
       ]
     }
   ],

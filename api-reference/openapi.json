@@ -628,6 +628,112 @@
           }
         }
       }
+    },
+    "/v1/web-search": {
+      "get": {
+        "description": "Returns a json object/list with search results.",
+        "security": [],
+        "parameters": [
+          {
+            "name": "key",
+            "in": "query",
+            "description": "Your ShuttleAI API key.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "description": "The search query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Defaults to `5`. The number of search results to return",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "version",
+            "in": "query",
+            "description": "Defaults to `v0`. The version of the search engine to use.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "v0",
+                "v1",
+                "v2"
+              ]
+            }
+          },
+          {
+            "name": "engine",
+            "in": "query",
+            "description": "Defaults to `ddg`. The engine to use for the search.  NOTE: `google` is only available in `v0` currently.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "ddg",
+                "google"
+              ]
+            }
+          },
+          {
+            "name": "scrape",
+            "in": "query",
+            "description": "Defaults to `false`. Whether to scrape the search results. NOTE: Only available in `v2` with `ddg`.",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "pretty",
+            "in": "query",
+            "description": "Defaults to `true`. Whether to pretty print the search results.",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Model response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "title": {
+                        "type": "string"
+                      },
+                      "link": {
+                        "type": "string"
+                      },
+                      "snippet": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
