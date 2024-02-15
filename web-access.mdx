@@ -52,15 +52,15 @@ tools = [
 
 Lookin' good! All that's left is sending our tools to our `chat_completion` request, retrieving the arguments, sending those arguments to our function, sending a second request with the results of our function for the model to answer our query.
 
-This should look something like this:
+This should look something like this by the end:
 
 ```py
+import json
 import httpx
+import asyncio
 from urllib.parse import quote
 
 from shuttleai import *
-import asyncio
-import json
 
 def search_web(query: str, engine: str = "ddg", limit: int = 5):
     response = httpx.get(
