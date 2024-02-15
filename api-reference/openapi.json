@@ -13,11 +13,6 @@
       "url": "https://api.shuttleai.app"
     }
   ],
-  "security": [
-    {
-      "bearerAuth": []
-    }
-  ],
   "paths": {
     "/v1/models": {
       "get": {
@@ -89,6 +84,11 @@
     "/v1/chat/completions": {
       "post": {
         "description": "Returns a `chat.completion` object with the generated response.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -279,6 +279,11 @@
     "/v1/images/generations": {
       "post": {
         "description": "Returns a `image.generation` object with the generated image.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -333,6 +338,11 @@
     "/v1/audio/generations": {
       "post": {
         "description": "Returns an `audio.generation` object with the generated audio.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -397,6 +407,11 @@
     "/v1/audio/transcriptions": {
       "post": {
         "description": "Returns an `audio.transcription` object with the generated transcription.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "requestBody": {
           "content": {
             "multipart/form-data": {
@@ -441,6 +456,11 @@
     "/v1/moderations": {
       "post": {
         "description": "Returns a `moderation` object with the analysis result.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -501,6 +521,11 @@
     "/v1/embeddings": {
       "post": {
         "description": "Returns an `embedding` object with the embeddings.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
