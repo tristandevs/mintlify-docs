@@ -43,15 +43,15 @@
       "pages": [
         "api-reference/endpoint/models",
         "api-reference/endpoint/model",
+        "api-reference/endpoint/joke",
+        "api-reference/endpoint/insult",
+        "api-reference/endpoint/web-search",
         "api-reference/endpoint/chat-completion",
         "api-reference/endpoint/images-generations",
         "api-reference/endpoint/audio-generations",
         "api-reference/endpoint/audio-transcriptions",
         "api-reference/endpoint/moderations",
-        "api-reference/endpoint/embeddings",
-        "api-reference/endpoint/joke",
-        "api-reference/endpoint/insult",
-        "api-reference/endpoint/web-search"
+        "api-reference/endpoint/embeddings"
       ]
     }
   ],
