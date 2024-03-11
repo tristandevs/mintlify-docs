@@ -585,7 +585,16 @@
     "/v1/joke": {
       "get": {
         "description": "Returns a random joke.",
+        "security": [],
         "parameters": [{
+          "name": "key",
+          "in": "query",
+          "description": "Your ShuttleAI API key.",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },{
           "name": "n",
           "in": "query",
           "description": "Defaults to `1`. The number of jokes to return - Maximum of `4`",
@@ -621,7 +630,16 @@
     "/v1/insult": {
       "get": {
         "description": "Returns a random insult.",
+        "security": [],
         "parameters": [{
+          "name": "key",
+          "in": "query",
+          "description": "Your ShuttleAI API key.",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },{
           "name": "n",
           "in": "query",
           "description": "Defaults to `1`. The number of insults to return - Maximum of `4`",
