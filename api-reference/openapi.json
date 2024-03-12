@@ -705,48 +705,38 @@
             }
           },
           {
-            "name": "version",
+            "name": "model",
             "in": "query",
-            "description": "Defaults to `v0`. The version of the search engine to use.",
+            "description": "Defaults to `search-ddg`. The engine to use for the search.",
             "required": false,
             "schema": {
               "type": "string",
               "enum": [
-                "v0",
-                "v1",
-                "v2"
+                "search-ddg",
+                "search-google"
               ]
             }
           },
           {
-            "name": "engine",
+            "name": "lang",
             "in": "query",
-            "description": "Defaults to `ddg`. The engine to use for the search.  NOTE: `google` is only available in `v0` currently.",
+            "description": "Defaults to `en`. The language to use for the search. (NOTE: Only available for `search-google`!)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "Defaults to `searchTypeUndefined` (web). The type of search. (NOTE: Only available for `search-google`!)",
             "required": false,
             "schema": {
               "type": "string",
               "enum": [
-                "ddg",
-                "google"
+                "searchTypeUndefined",
+                "image"
               ]
-            }
-          },
-          {
-            "name": "scrape",
-            "in": "query",
-            "description": "Defaults to `false`. Whether to scrape the search results. NOTE: Only available in `v2` with `ddg`.",
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "name": "pretty",
-            "in": "query",
-            "description": "Defaults to `true`. Whether to pretty print the search results.",
-            "required": false,
-            "schema": {
-              "type": "boolean"
             }
           }
         ],
