@@ -5,6 +5,7 @@ Our official [Python Library](https://pypi.org/project/shuttleai) handles Server
 <CodeGroup>
 ```python Python
 from shuttleai import *
+import asyncio
 
 async def main():
     async with ShuttleAsyncClient($SHUTTLEAI_API_KEY, timeout=60) as shuttle:
@@ -22,8 +23,6 @@ async def main():
 
 
 if __name__ == "__main__":
-    import asyncio
-    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
     asyncio.run(main())
 ```
 

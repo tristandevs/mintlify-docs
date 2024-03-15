@@ -18,6 +18,7 @@ pip install -U shuttleai
 <CodeGroup>
 ```python Asynchronous
 from shuttleai import *
+import asyncio
 
 SHUTTLE_KEY = "ShuttleAPI Key"
 
@@ -92,8 +93,6 @@ async def main():
 
 
 if __name__ == "__main__":
-    import asyncio
-    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
     asyncio.run(main())
 ```
 

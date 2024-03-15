@@ -807,6 +807,9 @@
                 },
                 "created": {
                   "type": "integer"
+                },
+                "endpoint": {
+                  "type": "str"
                 }
               }
             }

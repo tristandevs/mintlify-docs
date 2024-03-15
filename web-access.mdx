@@ -10,11 +10,11 @@ First, let's start off by making our method which accesses ShuttleAI's Web Searc
 import httpx
 from urllib.parse import quote, unquote
 
-def search_web(query: str, engine: str = "ddg", limit: int = 5):
-    response = httpx.get(
-        url=f"https://api.shuttleai.app/v1/web-search?q={quote(query)}&limit={limit}&engine={engine}&key=$SHUTTLEAI_API_KEY"
-    ).json()
-    return response
+def search_web(query: str, model: str = "search-ddg", limit: int = 5):
+    with httpx.get(
+        url=f"https://api.shuttleai.app/v1/web-search?q={quote(query)}&limit={limit}&model={model}&key=$SHUTTLEAI_API_KEY"
+    ) as response:
+        return response.json()
 ```
 
 Next, let's assign a tool which will call our `search_web` function.
@@ -33,10 +33,10 @@ tools = [
                         "type": "string",
                         "description": "The query to search for."
                     },
-                    "engine": {
+                    "model": {
                         "type": "string",
-                        "enum": ["ddg", "google"],
-                        "description": "Defaults to `ddg`. The engine to search with."
+                        "enum": ["search-ddg", "search-google"],
+                        "description": "Defaults to `search-ddg`. The model to search with."
                     },
                     "limit": {
                         "type": "integer",
@@ -55,18 +55,16 @@ Lookin' good! All that's left is sending our tools to our `chat_completion` requ
 This should look something like this by the end:
 
 ```py
-import json
-import httpx
-import asyncio
+import json, httpx, asyncio
 from urllib.parse import quote
 
 from shuttleai import *
 
-def search_web(query: str, engine: str = "ddg", limit: int = 5):
-    response = httpx.get(
-        url=f"https://api.shuttleai.app/v1/web-search?q={quote(query)}&limit={limit}&engine={engine}&key=$SHUTTLEAI_API_KEY"
-    ).json()
-    return response
+def search_web(query: str, model: str = "search-ddg", limit: int = 5):
+    with httpx.get(
+        url=f"https://api.shuttleai.app/v1/web-search?q={quote(query)}&limit={limit}&model={model}&key=$SHUTTLEAI_API_KEY"
+    ) as response:
+        return response.json()
 
 tools = [
     {
