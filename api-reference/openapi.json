@@ -809,7 +809,7 @@
                   "type": "integer"
                 },
                 "endpoint": {
-                  "type": "str"
+                  "type": "string"
                 }
               }
             }
