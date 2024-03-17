@@ -42,10 +42,7 @@ async def main():
         #     internet=False
         # )
         # async for chunk in response:
-        #     try:
-        #         print(chunk['choices'][0]['delta']['content'])
-        #     except:
-        #         pass
+        #     print(chunk.choices[0].delta.content)
         """Non-Streaming Example"""
         # response = await shuttle.chat_completion(
         #     model="gpt-3.5-turbo",
@@ -57,7 +54,7 @@ async def main():
         #     temperature=0.5,
         #     image="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
         # )
-        # print(response)
+        # print(response.choices[0].message.content))
         """Image Generation Example"""
         # response = await shuttle.images_generations(
         #     model='sdxl',

@@ -16,10 +16,7 @@ async def main():
              plain=True
          )
          async for chunk in response:
-             try:
-                 print(chunk['choices'][0]['delta']['content'])
-             except:
-                 pass
+             print(chunk.choices[0].delta.content)
 
 
 if __name__ == "__main__":
