@@ -2,7 +2,7 @@ Tool Calling *(previously Function Calling)* is a great way to introduce Shuttle
 
 Tool calling gives you the ability to give the model certain information about a function and the model will choose how to use that information to generate a function-ready formatted respnse for you automatically.
 
-<Tip>Note: Not all models are trained with tool calling data, only the following are capable of this feature: `shuttle-tools`, `gemini-pro`, `mixtral-8x7b`, `mistral-7b`, `gpt-3.5-turbo`, `gpt-4-0613`, `gpt-3.5-turbo-1106`, `gpt-3.5-turbo-0613`.</Tip>
+<Tip>Note: Not all models are trained with tool calling data, only the following are capable of this feature: `shuttle-tools`, `gemini-pro`, `mixtral-8x7b`, `mistral-7b`, `gpt-3.5-turbo`, `gpt-4-0613`, `gpt-3.5-turbo-1106`, `gpt-3.5-turbo-0613`, `gpt-3.5-turbo-0125`.</Tip>
 
 # What is a Tool?
 
@@ -41,8 +41,25 @@ Lets also make the function that we will call as well:
 > Keep in mind this is a basic example implementation and you would need to use your own weather API to get accurate results yourself.
 
 ```py
+import random
+
 def get_current_weather(location: str, unit: str = "fahrenheit"):
-    return get_weather_for(location=location, unit=unit)
+    """ Get the current weather in a given location. """
+    weather_data = {
+        "tokyo": (75, 85),
+        "san francisco": (55, 65),
+        "paris": (65, 75)
+    }
+    location = location.lower()
+    if location in weather_data:
+        temp_range = weather_data[location]
+        temperature = random.randint(*temp_range)
+    else:
+        temperature = "unknown"
+    return {
+        "location": location.title(),
+        "temperature": temperature
+    }
 ```
 
 Now that we have our tools and functions set up, lets make our request:
