@@ -106,20 +106,27 @@ async def main():
             tools=tools,
             tool_choice="auto"
         )
-        print(first_response['choices'][0]) # { 'finish_reason': 'tool_calls', 'message': { 'tool_calls': [ { 'function': { 'arguments': '{"query": "Five Nights at Freddys movie release date"}', 'name': 'search_web' }, 'id': '...', 'type': 'function' } ] } }
-        if first_response['choices'][0]['finish_reason'] == 'tool_calls':
-            tool_calls = first_response['choices'][0]['message']['tool_calls']
-            if tool_calls[0]['function']['name'] == 'search_web':
-                query = json.loads(tool_calls[0]['function']['arguments'])['query']
+
+        # print(first_response.choices[0].model_dump()) # { 'finish_reason': 'tool_calls', 'message': { 'tool_calls': [ { 'function': { 'arguments': '{"query": "Five Nights at Freddys movie release date"}', 'name': 'search_web' }, 'id': '...', 'type': 'function' } ] } }
+        
+        if first_response.choices[0].finish_reason == 'tool_calls':
+            tool_calls = first_response.choices[0].message.tool_calls
+            
+            if tool_calls[0].function.name == 'search_web':
+                query = json.loads(tool_calls[0].function.arguments)['query']
                 search_results = search_web(query)
-                print(search_results) # [ { 'title': '...', 'link': '...', 'snippet': '...' }, { ... } ]
+
+                # print(search_results) # [ { 'title': '...', 'link': '...', 'snippet': '...' }, { ... } ]
+                
                 if search_results:
                     convo.append({"role": "system", "content": f"Search results for '{query}': ```{search_results}```"})
-                    second_response = await shuttle.chat_completion(
-                        model="gpt-3.5-turbo",
-                        messages=convo
-                    )
-                    print(second_response['choices'][0]) # { 'finish_reason': 'stop', 'message': { 'content': 'The Five Nights at Freddy's movie was released on October 27, 2023. It was released for streaming on Peacock and theatrically in the United States.' } }
+                
+                second_response = await shuttle.chat_completion(
+                    model="gpt-3.5-turbo",
+                    messages=convo
+                )
+
+                print(second_response.choices[0].model_dump()) # { 'finish_reason': 'stop', 'message': { 'content': 'The Five Nights at Freddy's movie was released on October 27, 2023. It was released for streaming on Peacock and theatrically in the United States.' } }
 
 if __name__ == "__main__":
     asyncio.run(main())
