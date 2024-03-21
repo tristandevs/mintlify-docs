@@ -1,134 +1,134 @@
-| id | object | owned_by | tokens | info | cost | created | endpoint | file_upload | maintenance | max_images | multiple_of | premium | proxy_to | voices |
-| -- | ------ | -------- | ------ | ---- | ---- | ------- | -------- | ----------- | ----------- | ---------- | ----------- | ------- | -------- | ------ |
-| shuttle-turbo | model | openai/shuttleai | 32768 | Currently points to shuttle-1 | 1 | 1687882410 | /v1/chat/completions | - | - | - | - | - | - | - |
-| shuttle-1 | model | openai/shuttleai | 32768 | Shuttles latest chat completion model with built in support for image recognition & web access released on February 17th, 2024. | 1 | 1687882410 | /v1/chat/completions | - | - | - | - | - | - | - |
-| shuttle-tools | model | shuttleai | 32768 | A function/tool calling model. OpenAI format as always. | 1 | 1687882410 | /v1/chat/completions | - | - | - | - | True | - | - |
-| gpt-4-turbo-preview | proxy | openai | 128000 | Always proxies to latest gpt-4-turbo-preview model. | 4 | 1687882410 | /v1/chat/completions | - | - | - | - | True | gpt-4-0125-preview | - |
-| gpt-4-0125-preview | model | openai | 128000 | New (laziness reduced) GPT-4-Turbo-Preview 128k | 4 | 1687882410 | /v1/chat/completions | - | - | - | - | True | - | - |
-| gpt-4-1106-preview | model | openai | 128000 | GPT-4-Turbo-Preview 128k | 4 | 1687882410 | /v1/chat/completions | - | - | - | - | True | - | - |
-| gpt-4-vision-preview | model | openai | 128000 | GPT-4-Vision-Preview 128k | 4 | 1687882410 | /v1/chat/completions | - | - | - | - | True | - | - |
-| gpt-4-32k | model | openai | 32000 | Free provider pool of real GPT-4-32k, falls back to Bing GPT-4 32k if free pool is out. Premium pool found @ 32k-0613. | 4 | 1687882410 | /v1/chat/completions | - | - | - | - | - | - | - |
-| gpt-4-32k-0613 | model | openai | 32768 | - | 3 | 1687882410 | /v1/chat/completions | - | - | - | - | True | - | - |
-| gpt-4-0613 | model | openai | 8192 | - | 2 | 1687882410 | /v1/chat/completions | - | - | - | - | - | - | - |
-| gpt-4 | model | openai | 8192 | GPT-4 is a large multimodal model by OpenAI. | 2 | 1687882410 | /v1/chat/completions | - | - | - | - | - | - | - |
-| gpt-4-bing-turbo | model | openai/bing | - | - | 1 | 1687882410 | /v1/chat/completions | - | - | - | - | - | - | - |
-| gpt-4-bing | model | openai/bing | - | - | 1 | 1687882410 | /v1/chat/completions | - | - | - | - | - | - | - |
-| gpt-3.5-turbo | model | openai | - | - | 1 | 1687882410 | /v1/chat/completions | - | - | - | - | - | - | - |
-| gpt-3.5-turbo-0125 | model | openai | 16385 | - | 1 | 1687882410 | /v1/chat/completions | - | - | - | - | True | - | - |
-| gpt-3.5-turbo-1106 | model | openai | 16385 | - | 1 | 1687882410 | /v1/chat/completions | - | - | - | - | - | - | - |
-| gpt-3.5-turbo-0613 | model | openai | 4097 | - | 1 | 1687882410 | /v1/chat/completions | - | - | - | - | - | - | - |
-| gpt-3.5-turbo-0301 | model | openai | 4097 | - | 1 | 1687882410 | /v1/chat/completions | - | - | - | - | - | - | - |
-| gpt-3.5-turbo-16k | model | openai | 16384 | - | 1 | 1687882410 | /v1/chat/completions | - | - | - | - | - | - | - |
-| gpt-3.5-turbo-16k-0613 | proxy | openai | 16385 | - | 1 | 1687882410 | /v1/chat/completions | - | - | - | - | - | gpt-3.5-turbo-1106 | - |
-| chatgpt | model | openai | 8192 | official chatgpt (GPT 3.5) aka openai's fastest and most capable free-to-use model aka text-davinci-002-render-sha | 1 | 1687882410 | /v1/chat/completions | - | - | - | - | - | - | - |
-| claude-3-opus | model | anthropic | 200000 | - | 9 | 1687882410 | /v1/chat/completions | - | - | - | - | True | - | - |
-| claude-3-sonnet | model | anthropic | 200000 | - | 7 | 1687882410 | /v1/chat/completions | - | - | - | - | True | - | - |
-| claude-3-haiku-200k | model | anthropic | 200000 | - | 5 | 1687882410 | /v1/chat/completions | - | - | - | - | True | - | - |
-| claude-3-haiku | model | anthropic | 72000 | Context window has been shortened to optimize for speed and cost. For longer context messages, please try Claude-3-Haiku-200k. | 1 | 1687882410 | /v1/chat/completions | - | - | - | - | True | - | - |
-| claude-2.1 | model | anthropic | 200000 | - | 4 | 1687882410 | /v1/chat/completions | - | - | - | - | True | - | - |
-| claude-2.0 | model | anthropic | 100000 | - | 4 | 1687882410 | /v1/chat/completions | - | - | - | - | True | - | - |
-| claude-instant-100k | model | anthropic | 100000 | - | 3 | 1687882410 | /v1/chat/completions | True | - | - | - | True | - | - |
-| claude-instant | model | anthropic | - | - | 1 | 1687882410 | /v1/chat/completions | - | - | - | - | - | - | - |
-| gemini-1.5-pro | model | google | 1000000 | - | 9 | 1687882410 | /v1/chat/completions | - | - | - | - | True | - | - |
-| gemini-pro | model | google | 30724 | - | 1 | 1687882410 | /v1/chat/completions | - | - | - | - | True | - | - |
-| gemini-pro-vision | model | google | 30724 | - | 1 | 1687882410 | /v1/chat/completions | - | - | - | - | True | - | - |
-| palm-2 | model | google | 8192 | - | 2 | 1687882410 | /v1/chat/completions | - | - | - | - | - | - | - |
-| mistral-large | model | mistralai | - | Mistral's Latest and Largest Model. | 4 | 1687882410 | /v1/chat/completions | - | - | - | - | - | - | - |
-| mistral-next | model | mistralai | - | Prototype model with extra concision. | 4 | 1687882410 | /v1/chat/completions | - | - | - | - | True | - | - |
-| mistral-medium | model | mistralai | - | - | 2 | 1687882410 | /v1/chat/completions | - | - | - | - | - | - | - |
-| mistral-small | model | mistralai | - | - | 2 | 1687882410 | /v1/chat/completions | - | - | - | - | - | - | - |
-| mistral-7b | model | mistralai | 4096 | - | 1 | 1687882410 | /v1/chat/completions | - | - | - | - | - | - | - |
-| mixtral-8x7b | model | mistralai | 32768 | - | 1 | 1687882410 | /v1/chat/completions | - | - | - | - | - | - | - |
-| dolphin-mixtral-8x7b | model | cognitivecomputations | 4096 | - | 1 | 1687882410 | /v1/chat/completions | - | - | - | - | - | - | - |
-| chronos-hermes-13b | model | chronos/hermes | - | - | 1 | 1687882410 | /v1/chat/completions | - | - | - | - | - | - | - |
-| pplx-70b-online | model | perplexitylabs | 32768 | - | 1 | 1687882410 | /v1/chat/completions | - | - | - | - | - | - | - |
-| pplx-70b-chat | model | perplexitylabs | 32768 | - | 1 | 1687882410 | /v1/chat/completions | - | - | - | - | - | - | - |
-| pplx-7b-online | model | perplexitylabs | 32768 | - | 1 | 1687882410 | /v1/chat/completions | - | - | - | - | - | - | - |
-| pplx-7b-chat | model | perplexitylabs | 32768 | - | 1 | 1687882410 | /v1/chat/completions | - | - | - | - | - | - | - |
-| nous-capybara-34b | model | nous | 200000 | - | 4 | 1687882410 | /v1/chat/completions | - | - | - | - | - | - | - |
-| yi-34b-chat | model | yi | 200000 | - | 4 | 1687882410 | /v1/chat/completions | - | - | - | - | - | - | - |
-| starcoder-16b | model | star | - | - | 2 | 1687882410 | /v1/chat/completions | - | - | - | - | - | - | - |
-| starcoder-7b | model | star | - | - | 2 | 1687882410 | /v1/chat/completions | - | - | - | - | - | - | - |
-| deepseek-coder | model | deepseek | 4096 | - | 1 | 1687882410 | /v1/chat/completions | - | - | - | - | - | - | - |
-| deepseek-chat | model | deepseek | 4096 | - | 1 | 1687882410 | /v1/chat/completions | - | - | - | - | - | - | - |
-| airoboros-2-70b | model | jondurbin | 6105 | - | 1 | 1687882410 | /v1/chat/completions | - | - | - | - | - | - | - |
-| airoboros-70b | model | jondurbin | 6105 | - | 1 | 1687882410 | /v1/chat/completions | - | - | - | - | - | - | - |
-| falcon-180b | model | tiiuae | 6105 | - | 1 | 1687882410 | /v1/chat/completions | - | True | - | - | - | - | - |
-| phind-34b | model | phind | - | - | 2 | 1687882410 | /v1/chat/completions | - | - | - | - | - | - | - |
-| phind-code-llama-v2-34b | model | phind | - | - | 2 | 1687882410 | /v1/chat/completions | - | - | - | - | - | - | - |
-| code-llama-70b | model | metaai | 6105 | - | 1 | 1687882410 | /v1/chat/completions | - | - | - | - | - | - | - |
-| code-llama-34b | model | metaai | 6105 | - | 1 | 1687882410 | /v1/chat/completions | - | - | - | - | - | - | - |
-| llama-2-70b-chat | model | metaai | 6105 | Llama 2 70b Chat Hf | 1 | 1687882410 | /v1/chat/completions | - | - | - | - | - | - | - |
-| llama-2-13b-chat | model | metaai | 2048 | - | 1 | 1687882410 | /v1/chat/completions | - | - | - | - | - | - | - |
-| llama-2-7b-chat | model | metaai | 2048 | - | 1 | 1687882410 | /v1/chat/completions | - | - | - | - | - | - | - |
-| llama-summarize | model | metaai | - | - | 2 | 1687882410 | /v1/chat/completions | - | - | - | - | - | - | - |
-| llava-13b | model | metaai | 2048 | Llava 13b, either send a 'image' paramater with your model and messages or send an image in the last message. | 1 | 1687882410 | /v1/chat/completions | - | - | - | - | - | - | - |
-| midjourney | model | midjourney | - | - | 369 | 1687882410 | /v1/images/generations | - | - | 4 | 4 | True | - | - |
-| dall-e-3 | model | openai | - | - | 4 | 1687882410 | /v1/images/generations | - | - | - | - | - | - | - |
-| dall-e-3-premium | model | openai | - | - | 4 | 1687882410 | /v1/images/generations | - | - | - | - | True | - | - |
-| dall-e-2 | model | openai | - | - | 3 | 1687882410 | /v1/images/generations | - | - | - | - | - | - | - |
-| sdxl | model | stabilityai | - | - | 1 | 1687882410 | /v1/images/generations | - | - | - | - | - | - | - |
-| sdxl-turbo | model | stabilityai | - | - | 2 | 1687882410 | /v1/images/generations | - | - | 4 | 1 | - | - | - |
-| sdxl-emoji | model | stabilityai/fofr | - | - | 2 | 1687882410 | /v1/images/generations | - | - | 4 | 1 | - | - | - |
-| dreamshaper-xl | model | stabilityai | - | - | 2 | 1687882410 | /v1/images/generations | - | - | 4 | 1 | - | - | - |
-| juggernaut-xl | model | stabilityai | - | - | 2 | 1687882410 | /v1/images/generations | - | - | 4 | 1 | - | - | - |
-| dynavision-xl | model | stabilityai | - | - | 2 | 1687882410 | /v1/images/generations | - | - | 4 | 1 | - | - | - |
-| realism-engine-xl | model | stabilityai | - | - | 2 | 1687882410 | /v1/images/generations | - | - | 4 | 1 | - | - | - |
-| sdxl-inpainting | model | stabilityai | - | - | 4 | 1687882410 | /v1/images/generations | - | - | 4 | 1 | - | - | - |
-| turbovision-xl | model | stabilityai | - | - | 2 | 1687882410 | /v1/images/generations | - | - | 4 | 1 | - | - | - |
-| kandinsky-2.2 | model | sberbank | - | - | 1 | 1687882410 | /v1/images/generations | - | - | 4 | 1 | - | - | - |
-| kandinsky-2 | model | sberbank | - | - | 1 | 1687882410 | /v1/images/generations | - | - | 4 | 1 | - | - | - |
-| stable-diffusion 2.1 | model | stabilityai | - | - | 1 | 1687882410 | /v1/images/generations | - | - | 4 | 1 | - | - | - |
-| stable-diffusion 1.5 | model | stabilityai | - | - | 1 | 1687882410 | /v1/images/generations | - | - | 4 | 1 | - | - | - |
-| playground-v2.5 | model | playgroundai | - | - | 2 | 1687882410 | /v1/images/generations | - | - | - | - | - | - | - |
-| dreamshaper-v8 | model | stabilityai | - | - | 1 | 1687882410 | /v1/images/generations | - | - | 4 | 1 | - | - | - |
-| rev-animated | model | stabilityai | - | - | 1 | 1687882410 | /v1/images/generations | - | - | 4 | 1 | - | - | - |
-| anything-v5 | model | stabilityai | - | - | 1 | 1687882410 | /v1/images/generations | - | - | 4 | 1 | - | - | - |
-| absolutereality-v1.8.1 | model | stabilityai | - | - | 1 | 1687882410 | /v1/images/generations | - | - | 4 | 1 | - | - | - |
-| realisticvision-v5 | model | stabilityai | - | - | 1 | 1687882410 | /v1/images/generations | - | - | 4 | 1 | - | - | - |
-| timeless-v1 | model | stabilityai | - | - | 1 | 1687882410 | /v1/images/generations | - | - | 4 | 1 | - | - | - |
-| portrait-v1 | model | stabilityai | - | - | 1 | 1687882410 | /v1/images/generations | - | - | 4 | 1 | - | - | - |
-| analog | model | stabilityai | - | - | 1 | 1687882410 | /v1/images/generations | - | - | 4 | 1 | - | - | - |
-| anything-v3 | model | stabilityai | - | - | 1 | 1687882410 | /v1/images/generations | - | - | 4 | 1 | - | - | - |
-| anything-v4 | model | stabilityai | - | - | 1 | 1687882410 | /v1/images/generations | - | - | 4 | 1 | - | - | - |
-| abyssorangemix | model | stabilityai | - | - | 1 | 1687882410 | /v1/images/generations | - | - | 4 | 1 | - | - | - |
-| deliberate | model | stabilityai | - | - | 1 | 1687882410 | /v1/images/generations | - | - | 4 | 1 | - | - | - |
-| dreamlike-v1 | model | stabilityai | - | - | 1 | 1687882410 | /v1/images/generations | - | - | 4 | 1 | - | - | - |
-| dreamlike-v2 | model | stabilityai | - | - | 1 | 1687882410 | /v1/images/generations | - | - | 4 | 1 | - | - | - |
-| dreamshaper-5 | model | stabilityai | - | - | 1 | 1687882410 | /v1/images/generations | - | - | 4 | 1 | - | - | - |
-| dreamshaper-6 | model | stabilityai | - | - | 1 | 1687882410 | /v1/images/generations | - | - | 4 | 1 | - | - | - |
-| elldrethvividmix | model | stabilityai | - | - | 1 | 1687882410 | /v1/images/generations | - | - | 4 | 1 | - | - | - |
-| lyriel-v15 | model | stabilityai | - | - | 1 | 1687882410 | /v1/images/generations | - | - | 4 | 1 | - | - | - |
-| lyriel-v16 | model | stabilityai | - | - | 1 | 1687882410 | /v1/images/generations | - | - | 4 | 1 | - | - | - |
-| mechamix | model | stabilityai | - | - | 1 | 1687882410 | /v1/images/generations | - | - | 4 | 1 | - | - | - |
-| meinamix | model | stabilityai | - | - | 1 | 1687882410 | /v1/images/generations | - | - | 4 | 1 | - | - | - |
-| realisticvs-v14 | model | stabilityai | - | - | 1 | 1687882410 | /v1/images/generations | - | - | 4 | 1 | - | - | - |
-| realisticvs-v20 | model | stabilityai | - | - | 1 | 1687882410 | /v1/images/generations | - | - | 4 | 1 | - | - | - |
-| riffusion | model | stabilityai | - | - | 1 | 1687882410 | /v1/images/generations | - | - | 4 | 1 | - | - | - |
-| sd-v14 | model | stabilityai | - | - | 1 | 1687882410 | /v1/images/generations | - | - | 4 | 1 | - | - | - |
-| sd-v15 | model | stabilityai | - | - | 1 | 1687882410 | /v1/images/generations | - | - | 4 | 1 | - | - | - |
-| sbp | model | stabilityai | - | - | 1 | 1687882410 | /v1/images/generations | - | - | 4 | 1 | - | - | - |
-| theallysmix | model | stabilityai | - | - | 1 | 1687882410 | /v1/images/generations | - | - | 4 | 1 | - | - | - |
-| openjourney | model | stabilityai | - | - | 1 | 1687882410 | /v1/images/generations | - | - | 4 | 1 | - | - | - |
-| icbinp | model | seco | - | ICBINP aka ICantBelieveItsNotPhotography by SECO | 1 | 1687882410 | /v1/images/generations | - | - | 4 | 1 | - | - | - |
-| latent-consistency-model | model | LCM | - | LCMs: The next generation of generative models after Latent Diffusion Models (LDMs). | 1 | 1687882410 | /v1/images/generations | - | - | 4 | 1 | - | - | - |
-| deepfloyd-if | model | deepfloyd | - | - | 1 | 1687882410 | /v1/images/generations | - | - | 4 | 1 | - | - | - |
-| material-diffusion | model | material | - | - | 1 | 1687882410 | /v1/images/generations | - | - | 4 | 1 | - | - | - |
-| eleven-labs | model | elevenlabs | - | - | 1 | 1687882410 | /v1/audio/speech | - | - | - | - | - | - | https://api.shuttleai.app/v1/voices/eleven-labs |
-| eleven-labs-2 | model | elevenlabs | - | - | 2 | 1687882410 | /v1/audio/speech | - | - | - | - | True | - | https://api.shuttleai.app/v1/voices/eleven-labs |
-| eleven-labs-999 | model | elevenlabs | - | - | 3 | 1687882410 | /v1/audio/speech | - | - | - | - | True | - | https://api.shuttleai.app/v1/voices/eleven-labs |
-| speechify | model | speechify | 3000 | - | 3 | 1687882410 | /v1/audio/speech | - | - | - | - | - | - | https://api.shuttleai.app/v1/voices/speechify |
-| tts-1 | model | openai | 4096 | - | 1 | 1687882410 | /v1/audio/speech | - | - | - | - | True | - | https://api.shuttleai.app/v1/voices/openai-tts |
-| tts-1-hd | model | openai | 4096 | - | 1 | 1687882410 | /v1/audio/speech | - | - | - | - | True | - | https://api.shuttleai.app/v1/voices/openai-tts |
-| whisper-large | model | openai | - | - | 2 | 1687882410 | /v1/audio/transcriptions | - | - | - | - | - | - | - |
-| whisper-1 | model | openai | - | - | 1 | 1687882410 | /v1/audio/transcriptions | - | - | - | - | True | - | - |
-| text-embedding-3-large | model | openai | 3072 | also supports multiple inputs at once by using a list of strings as the input | 1 | 1687882410 | /v1/embeddings | - | - | - | - | - | - | - |
-| text-embedding-3-small | model | openai | 1536 | also supports multiple inputs at once by using a list of strings as the input | 1 | 1687882410 | /v1/embeddings | - | - | - | - | - | - | - |
-| text-embedding-ada-002 | model | openai | 1536 | also supports multiple inputs at once by using a list of strings as the input | 1 | 1687882410 | /v1/embeddings | - | - | - | - | - | - | - |
-| text-moderation-latest | model | openai | - | - | 1 | 1687882410 | /v1/moderations | - | - | - | - | - | - | - |
-| text-moderation-stable | model | openai | - | - | 1 | 1687882410 | /v1/moderations | - | - | - | - | - | - | - |
-| insult-1 | model | shuttleai | - | - | 1 | 1687882410 | /v1/insult | - | - | - | - | - | - | - |
-| joke-1 | model | shuttleai | - | - | 1 | 1687882410 | /v1/joke | - | - | - | - | - | - | - |
-| py-minify-1 | model | shuttleai | - | Instant Python Code Minification | 1 | 1687882410 | /v1/code/minify | - | - | - | - | - | - | - |
-| search-google | model | google | - | Includes web and image search, as well as support for many languages. | 2 | 1687882410 | /v1/web-search | - | - | - | - | - | - | - |
-| search-ddg | model | duckduckgo | - | - | 1 | 1687882410 | /v1/web-search | - | - | - | - | - | - | - |
+| id | owned_by | tokens | info | cost | endpoint | maintenance | premium |
+| -- | -------- | ------ | ---- | ---- | -------- | ----------- | ------- |
+| shuttle-turbo | openai/shuttleai | 32768 | Currently points to shuttle-1 | 1 | /v1/chat/completions | - | - |
+| shuttle-1 | openai/shuttleai | 32768 | Shuttles latest chat completion model with built in support for image recognition & web access released on February 17th, 2024. | 1 | /v1/chat/completions | - | - |
+| shuttle-tools | shuttleai | 32768 | A function/tool calling model. OpenAI format as always. | 1 | /v1/chat/completions | - | True |
+| gpt-4-turbo-preview | openai | 128000 | Always proxies to latest gpt-4-turbo-preview model. | 4 | /v1/chat/completions | - | True |
+| gpt-4-0125-preview | openai | 128000 | New (laziness reduced) GPT-4-Turbo-Preview 128k | 4 | /v1/chat/completions | - | True |
+| gpt-4-1106-preview | openai | 128000 | GPT-4-Turbo-Preview 128k | 4 | /v1/chat/completions | - | True |
+| gpt-4-vision-preview | openai | 128000 | GPT-4-Vision-Preview 128k | 4 | /v1/chat/completions | - | True |
+| gpt-4-32k | openai | 32000 | Free provider pool of real GPT-4-32k, falls back to Bing GPT-4 32k if free pool is out. Premium pool found @ 32k-0613. | 4 | /v1/chat/completions | - | - |
+| gpt-4-32k-0613 | openai | 32768 | - | 3 | /v1/chat/completions | - | True |
+| gpt-4-0613 | openai | 8192 | - | 2 | /v1/chat/completions | - | - |
+| gpt-4 | openai | 8192 | GPT-4 is a large multimodal model by OpenAI. | 2 | /v1/chat/completions | - | - |
+| gpt-4-bing-turbo | openai/bing | - | - | 1 | /v1/chat/completions | - | - |
+| gpt-4-bing | openai/bing | - | - | 1 | /v1/chat/completions | - | - |
+| gpt-3.5-turbo | openai | - | - | 1 | /v1/chat/completions | - | - |
+| gpt-3.5-turbo-0125 | openai | 16385 | - | 1 | /v1/chat/completions | - | True |
+| gpt-3.5-turbo-1106 | openai | 16385 | - | 1 | /v1/chat/completions | - | - |
+| gpt-3.5-turbo-0613 | openai | 4097 | - | 1 | /v1/chat/completions | - | - |
+| gpt-3.5-turbo-0301 | openai | 4097 | - | 1 | /v1/chat/completions | - | - |
+| gpt-3.5-turbo-16k | openai | 16384 | - | 1 | /v1/chat/completions | - | - |
+| gpt-3.5-turbo-16k-0613 | openai | 16385 | - | 1 | /v1/chat/completions | - | - |
+| chatgpt | openai | 8192 | official chatgpt (GPT 3.5) aka openai's fastest and most capable free-to-use model aka text-davinci-002-render-sha | 1 | /v1/chat/completions | - | - |
+| claude-3-opus | anthropic | 200000 | - | 9 | /v1/chat/completions | - | True |
+| claude-3-sonnet | anthropic | 200000 | - | 7 | /v1/chat/completions | - | True |
+| claude-3-haiku-200k | anthropic | 200000 | - | 5 | /v1/chat/completions | - | True |
+| claude-3-haiku | anthropic | 72000 | Context window has been shortened to optimize for speed and cost. For longer context messages, please try Claude-3-Haiku-200k. | 1 | /v1/chat/completions | - | True |
+| claude-2.1 | anthropic | 200000 | - | 4 | /v1/chat/completions | - | True |
+| claude-2.0 | anthropic | 100000 | - | 4 | /v1/chat/completions | - | True |
+| claude-instant-100k | anthropic | 100000 | - | 3 | /v1/chat/completions | - | True |
+| claude-instant | anthropic | - | - | 1 | /v1/chat/completions | - | - |
+| gemini-1.5-pro | google | 1000000 | - | 9 | /v1/chat/completions | - | True |
+| gemini-pro | google | 30724 | - | 1 | /v1/chat/completions | - | True |
+| gemini-pro-vision | google | 30724 | - | 1 | /v1/chat/completions | - | True |
+| palm-2 | google | 8192 | - | 2 | /v1/chat/completions | - | - |
+| mistral-large | mistralai | - | Mistral's Latest and Largest Model. | 4 | /v1/chat/completions | - | - |
+| mistral-next | mistralai | - | Prototype model with extra concision. | 4 | /v1/chat/completions | - | True |
+| mistral-medium | mistralai | - | - | 2 | /v1/chat/completions | - | - |
+| mistral-small | mistralai | - | - | 2 | /v1/chat/completions | - | - |
+| mistral-7b | mistralai | 4096 | - | 1 | /v1/chat/completions | - | - |
+| mixtral-8x7b | mistralai | 32768 | - | 1 | /v1/chat/completions | - | - |
+| dolphin-mixtral-8x7b | cognitivecomputations | 4096 | - | 1 | /v1/chat/completions | - | - |
+| chronos-hermes-13b | chronos/hermes | - | - | 1 | /v1/chat/completions | - | - |
+| pplx-70b-online | perplexitylabs | 32768 | - | 1 | /v1/chat/completions | - | - |
+| pplx-70b-chat | perplexitylabs | 32768 | - | 1 | /v1/chat/completions | - | - |
+| pplx-7b-online | perplexitylabs | 32768 | - | 1 | /v1/chat/completions | - | - |
+| pplx-7b-chat | perplexitylabs | 32768 | - | 1 | /v1/chat/completions | - | - |
+| nous-capybara-34b | nous | 200000 | - | 4 | /v1/chat/completions | - | - |
+| yi-34b-chat | yi | 200000 | - | 4 | /v1/chat/completions | - | - |
+| starcoder-16b | star | - | - | 2 | /v1/chat/completions | - | - |
+| starcoder-7b | star | - | - | 2 | /v1/chat/completions | - | - |
+| deepseek-coder | deepseek | 4096 | - | 1 | /v1/chat/completions | - | - |
+| deepseek-chat | deepseek | 4096 | - | 1 | /v1/chat/completions | - | - |
+| airoboros-2-70b | jondurbin | 6105 | - | 1 | /v1/chat/completions | - | - |
+| airoboros-70b | jondurbin | 6105 | - | 1 | /v1/chat/completions | - | - |
+| falcon-180b | tiiuae | 6105 | - | 1 | /v1/chat/completions | True | - |
+| phind-34b | phind | - | - | 2 | /v1/chat/completions | - | - |
+| phind-code-llama-v2-34b | phind | - | - | 2 | /v1/chat/completions | - | - |
+| code-llama-70b | metaai | 6105 | - | 1 | /v1/chat/completions | - | - |
+| code-llama-34b | metaai | 6105 | - | 1 | /v1/chat/completions | - | - |
+| llama-2-70b-chat | metaai | 6105 | Llama 2 70b Chat Hf | 1 | /v1/chat/completions | - | - |
+| llama-2-13b-chat | metaai | 2048 | - | 1 | /v1/chat/completions | - | - |
+| llama-2-7b-chat | metaai | 2048 | - | 1 | /v1/chat/completions | - | - |
+| llama-summarize | metaai | - | - | 2 | /v1/chat/completions | - | - |
+| llava-13b | metaai | 2048 | Llava 13b, either send a 'image' paramater with your model and messages or send an image in the last message. | 1 | /v1/chat/completions | - | - |
+| midjourney | midjourney | - | - | 369 | /v1/images/generations | - | True |
+| dall-e-3 | openai | - | - | 4 | /v1/images/generations | - | - |
+| dall-e-3-premium | openai | - | - | 4 | /v1/images/generations | - | True |
+| dall-e-2 | openai | - | - | 3 | /v1/images/generations | - | - |
+| sdxl | stabilityai | - | - | 1 | /v1/images/generations | - | - |
+| sdxl-turbo | stabilityai | - | - | 2 | /v1/images/generations | - | - |
+| sdxl-emoji | stabilityai/fofr | - | - | 2 | /v1/images/generations | - | - |
+| dreamshaper-xl | stabilityai | - | - | 2 | /v1/images/generations | - | - |
+| juggernaut-xl | stabilityai | - | - | 2 | /v1/images/generations | - | - |
+| dynavision-xl | stabilityai | - | - | 2 | /v1/images/generations | - | - |
+| realism-engine-xl | stabilityai | - | - | 2 | /v1/images/generations | - | - |
+| sdxl-inpainting | stabilityai | - | - | 4 | /v1/images/generations | - | - |
+| turbovision-xl | stabilityai | - | - | 2 | /v1/images/generations | - | - |
+| kandinsky-2.2 | sberbank | - | - | 1 | /v1/images/generations | - | - |
+| kandinsky-2 | sberbank | - | - | 1 | /v1/images/generations | - | - |
+| stable-diffusion 2.1 | stabilityai | - | - | 1 | /v1/images/generations | - | - |
+| stable-diffusion 1.5 | stabilityai | - | - | 1 | /v1/images/generations | - | - |
+| playground-v2.5 | playgroundai | - | - | 2 | /v1/images/generations | - | - |
+| dreamshaper-v8 | stabilityai | - | - | 1 | /v1/images/generations | - | - |
+| rev-animated | stabilityai | - | - | 1 | /v1/images/generations | - | - |
+| anything-v5 | stabilityai | - | - | 1 | /v1/images/generations | - | - |
+| absolutereality-v1.8.1 | stabilityai | - | - | 1 | /v1/images/generations | - | - |
+| realisticvision-v5 | stabilityai | - | - | 1 | /v1/images/generations | - | - |
+| timeless-v1 | stabilityai | - | - | 1 | /v1/images/generations | - | - |
+| portrait-v1 | stabilityai | - | - | 1 | /v1/images/generations | - | - |
+| analog | stabilityai | - | - | 1 | /v1/images/generations | - | - |
+| anything-v3 | stabilityai | - | - | 1 | /v1/images/generations | - | - |
+| anything-v4 | stabilityai | - | - | 1 | /v1/images/generations | - | - |
+| abyssorangemix | stabilityai | - | - | 1 | /v1/images/generations | - | - |
+| deliberate | stabilityai | - | - | 1 | /v1/images/generations | - | - |
+| dreamlike-v1 | stabilityai | - | - | 1 | /v1/images/generations | - | - |
+| dreamlike-v2 | stabilityai | - | - | 1 | /v1/images/generations | - | - |
+| dreamshaper-5 | stabilityai | - | - | 1 | /v1/images/generations | - | - |
+| dreamshaper-6 | stabilityai | - | - | 1 | /v1/images/generations | - | - |
+| elldrethvividmix | stabilityai | - | - | 1 | /v1/images/generations | - | - |
+| lyriel-v15 | stabilityai | - | - | 1 | /v1/images/generations | - | - |
+| lyriel-v16 | stabilityai | - | - | 1 | /v1/images/generations | - | - |
+| mechamix | stabilityai | - | - | 1 | /v1/images/generations | - | - |
+| meinamix | stabilityai | - | - | 1 | /v1/images/generations | - | - |
+| realisticvs-v14 | stabilityai | - | - | 1 | /v1/images/generations | - | - |
+| realisticvs-v20 | stabilityai | - | - | 1 | /v1/images/generations | - | - |
+| riffusion | stabilityai | - | - | 1 | /v1/images/generations | - | - |
+| sd-v14 | stabilityai | - | - | 1 | /v1/images/generations | - | - |
+| sd-v15 | stabilityai | - | - | 1 | /v1/images/generations | - | - |
+| sbp | stabilityai | - | - | 1 | /v1/images/generations | - | - |
+| theallysmix | stabilityai | - | - | 1 | /v1/images/generations | - | - |
+| openjourney | stabilityai | - | - | 1 | /v1/images/generations | - | - |
+| icbinp | seco | - | ICBINP aka ICantBelieveItsNotPhotography by SECO | 1 | /v1/images/generations | - | - |
+| latent-consistency-model | LCM | - | LCMs: The next generation of generative models after Latent Diffusion Models (LDMs). | 1 | /v1/images/generations | - | - |
+| deepfloyd-if | deepfloyd | - | - | 1 | /v1/images/generations | - | - |
+| material-diffusion | material | - | - | 1 | /v1/images/generations | - | - |
+| eleven-labs | elevenlabs | - | - | 1 | /v1/audio/speech | - | - |
+| eleven-labs-2 | elevenlabs | - | - | 2 | /v1/audio/speech | - | True |
+| eleven-labs-999 | elevenlabs | - | - | 3 | /v1/audio/speech | - | True |
+| speechify | speechify | 3000 | - | 3 | /v1/audio/speech | - | - |
+| tts-1 | openai | 4096 | - | 1 | /v1/audio/speech | - | True |
+| tts-1-hd | openai | 4096 | - | 1 | /v1/audio/speech | - | True |
+| whisper-large | openai | - | - | 2 | /v1/audio/transcriptions | - | - |
+| whisper-1 | openai | - | - | 1 | /v1/audio/transcriptions | - | True |
+| text-embedding-3-large | openai | 3072 | also supports multiple inputs at once by using a list of strings as the input | 1 | /v1/embeddings | - | - |
+| text-embedding-3-small | openai | 1536 | also supports multiple inputs at once by using a list of strings as the input | 1 | /v1/embeddings | - | - |
+| text-embedding-ada-002 | openai | 1536 | also supports multiple inputs at once by using a list of strings as the input | 1 | /v1/embeddings | - | - |
+| text-moderation-latest | openai | - | - | 1 | /v1/moderations | - | - |
+| text-moderation-stable | openai | - | - | 1 | /v1/moderations | - | - |
+| insult-1 | shuttleai | - | - | 1 | /v1/insult | - | - |
+| joke-1 | shuttleai | - | - | 1 | /v1/joke | - | - |
+| py-minify-1 | shuttleai | - | Instant Python Code Minification | 1 | /v1/code/minify | - | - |
+| search-google | google | - | Includes web and image search, as well as support for many languages. | 2 | /v1/web-search | - | - |
+| search-ddg | duckduckgo | - | - | 1 | /v1/web-search | - | - |
