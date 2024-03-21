@@ -9,12 +9,11 @@ To get started with using the official Python library, read below:
 
 ## Installation
 
-> We highly recommend using the async client instead of synchronous.
-
+<Tip>It is strongly recommended to use the asynchronous client instead of the synchronous client.</Tip>
 ```sh
 pip install -U shuttleai
 ```
-### Usage
+## Usage
 <CodeGroup>
 ```python Asynchronous
 from shuttleai import *
@@ -54,7 +53,7 @@ async def main():
         #     temperature=0.5,
         #     image="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
         # )
-        # print(response.choices[0].message.content))
+        # print(response.choices[0].message.content)
         """Image Generation Example"""
         # response = await shuttle.images_generations(
         #     model='sdxl',
@@ -77,7 +76,7 @@ async def main():
         # print(response)
         """Moderation Example"""
         # response = await shuttle.moderations(
-        #     model='text-moderation-007',
+        #     model='text-moderation-latest',
         #     input="I hate you"
         # )
         # print(response)

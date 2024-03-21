@@ -25,18 +25,46 @@
     "name": "Discord",
     "url": "https://discord.com/invite/shuttleai"
   },
+  "tabs": [
+    {
+      "name": "API Reference",
+      "url": "api-reference"
+    }
+  ],
+  "anchors": [
+    {
+      "name": "Get Started",
+      "icon": "book-open-cover",
+      "url": "https://docs.shuttleai.app/getting-started"
+    },
+    {
+      "name": "Guides",
+      "icon": "newspaper",
+      "url": "https://docs.shuttleai.app/guides"
+    },
+    {
+      "name": "API Reference",
+      "icon": "book-open-cover",
+      "url": "https://docs.shuttleai.app/api-reference/endpoint"
+    }
+  ],
   "navigation": [
     {
       "group": "Getting Started",
       "pages": [
-        "introduction",
-        "authentication",
-        "making-requests",
-        "streaming",
-        "tool-calling",
-        "web-access",
-        "jailbreaking",
-        "supported-models"
+        "getting-started/introduction",
+        "getting-started/authentication",
+        "getting-started/making-requests",
+        "getting-started/streaming",
+        "getting-started/models"
+      ]
+    },
+    {
+      "group": "Guides",
+      "pages": [
+        "guides/tool-calling",
+        "guides/web-access",
+        "guides/jailbreaking"
       ]
     },
     {
