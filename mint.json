@@ -64,7 +64,8 @@
       "pages": [
         "guides/tool-calling",
         "guides/web-access",
-        "guides/jailbreaking"
+        "guides/jailbreaking",
+        "guides/error-codes"
       ]
     },
     {

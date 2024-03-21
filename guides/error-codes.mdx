@@ -1,0 +1,19 @@
+---
+title: Error codes
+description: 'This guide includes an overview on error codes you might see from both the API and our official Python library. Each error code mentioned in the overview has a dedicated section with further guidance.'
+---
+
+## API errors
+
+| Code     	                                | Overview                                     	                                                                                                                                                              |
+|:-----------------------------------	    |:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 400 - Bad Request             	        | **Cause**: The request body is invalid.<br></br>**Solution**: Ensure your request body is valid.                                                                                                            |
+| 401 - No API key provided 	            | **Cause**: Missing `Authorization` header.<br></br>**Solution**: Ensure you are sending an `Authorization` header using the `Bearer` scheme.                                                                |
+| 401 - Invalid API key provided         	| **Cause**: Incorrect API key inputted.<br></br>**Solution**: Make sure your key is prefixed with `shuttle-` and exact, clear your browser cache, or [re-generate your key](https://shuttleai.app/keys).     |
+| 402 - Premium plan required            	| **Cause**: You are trying to access a premium model without a premium plan.<br></br>**Solution**: Upgrade your plan to access this model.                                                                   |
+| 403 - Banned API key provided             | **Cause**: Your API key has been banned.<br></br>**Solution**: Contact us to resolve the issue.                                                                                                             |
+| 403 - Banned IP address                   | **Cause**: Your IP address has been banned.<br></br>**Solution**: Contact us to resolve the issue.                                                                                                          |
+| 429 - Rate limit exceeded                 | **Cause**: You have exceeded your rate limit.<br></br>**Solution**: Wait until the next minute to continue using the API.                                                                                   |
+| 429 - Daily limit exceeded                | **Cause**: You have exceeded your daily limit.<br></br>**Solution**: Wait until the next day to continue using the API.                                                                                     |
+| 500 - Internal server error               | **Cause**: Server/provider issues.<br></br>**Solution**: Retry your request after a brief wait and contact us if the issue persists. Check the [status page](https://status.shuttleai.app).                 |
+| 503 - Service overloaded                  | **Cause**: Our servers are experiencing high traffic.<br></br>**Solution**: Retry your request after a brief wait and contact us if the issue persists. Check the [status page](https://status.shuttleai.app).                 |
