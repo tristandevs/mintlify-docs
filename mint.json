@@ -39,13 +39,8 @@
     },
     {
       "name": "Guides",
-      "icon": "newspaper",
-      "url": "https://docs.shuttleai.app/guides"
-    },
-    {
-      "name": "API Reference",
       "icon": "book-open-cover",
-      "url": "https://docs.shuttleai.app/api-reference/endpoint"
+      "url": "https://docs.shuttleai.app/guides"
     }
   ],
   "navigation": [
