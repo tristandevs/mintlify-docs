@@ -1,7 +1,8 @@
 | FREE | ID | OWNED BY | TOKENS | INFO | COST | ENDPOINT | MAINTENANCE |
 | ---- | -- | -------- | ------ | ---- | ---- | -------- | ----------- |
+| ✅ | shuttle-instant | shuttleai | 200000 | ShuttleAI's latest chat completion model with built in support for image recognition & web access released on March 24th, 2024. Supports 200,000 input tokens. | 4 | /v1/chat/completions | False |
 | ✅ | shuttle-turbo | shuttleai | 32768 | Currently points to shuttle-1 | 1 | /v1/chat/completions | False |
-| ✅ | shuttle-1 | shuttleai | 32768 | Shuttles latest chat completion model with built in support for image recognition & web access released on February 17th, 2024. | 1 | /v1/chat/completions | False |
+| ✅ | shuttle-1 | shuttleai | 32768 | ShuttleAI's Turbo chat completion model with built in support for image recognition & web access released on February 17th, 2024. | 1 | /v1/chat/completions | False |
 | ❌ | shuttle-tools | shuttleai | 32768 | A function/tool calling model. OpenAI format as always. | 1 | /v1/chat/completions | False |
 | ❌ | gpt-4-turbo-preview | openai | 128000 | Always proxies to latest gpt-4-turbo-preview model. | 4 | /v1/chat/completions | False |
 | ❌ | gpt-4-0125-preview | openai | 128000 | New (laziness reduced) GPT-4-Turbo-Preview 128k | 4 | /v1/chat/completions | False |
@@ -20,17 +21,17 @@
 | ✅ | gpt-3.5-turbo-0301 | openai | 4097 | N/A | 1 | /v1/chat/completions | False |
 | ✅ | gpt-3.5-turbo-16k | openai | 16384 | N/A | 1 | /v1/chat/completions | False |
 | ✅ | gpt-3.5-turbo-16k-0613 | openai | 16385 | N/A | 1 | /v1/chat/completions | False |
-| ✅ | chatgpt | openai | 8192 | official chatgpt (GPT 3.5) aka openai's fastest and most capable free-to-use model aka text-davinci-002-render-sha | 1 | /v1/chat/completions | False |
+| ✅ | chatgpt | openai | 8192 | official chatgpt (GPT 3.5) aka openai's fastest and most capable free-to-use model aka text-davinci-002-render-sha | 1 | /v1/chat/completions | True |
 | ❌ | claude-3-opus | anthropic | 200000 | N/A | 9 | /v1/chat/completions | False |
 | ❌ | claude-3-sonnet | anthropic | 200000 | N/A | 7 | /v1/chat/completions | False |
 | ❌ | claude-3-haiku-200k | anthropic | 200000 | N/A | 5 | /v1/chat/completions | False |
-| ❌ | claude-3-haiku | anthropic | 72000 | Context window has been shortened to optimize for speed and cost. For longer context messages, please try Claude-3-Haiku-200k. | 1 | /v1/chat/completions | False |
+| ❌ | claude-3-haiku | anthropic | 4096 | Context window has been shortened to optimize for speed and cost. For longer context messages, please try Claude-3-Haiku-200k. | 1 | /v1/chat/completions | False |
 | ❌ | claude-2.1 | anthropic | 200000 | N/A | 4 | /v1/chat/completions | False |
 | ❌ | claude-2.0 | anthropic | 100000 | N/A | 4 | /v1/chat/completions | False |
 | ❌ | claude-instant-100k | anthropic | 100000 | N/A | 3 | /v1/chat/completions | False |
 | ✅ | claude-instant | anthropic | - | N/A | 1 | /v1/chat/completions | False |
-| ❌ | gemini-1.5-pro | google | 1000000 | N/A | 9 | /v1/chat/completions | False |
-| ❌ | gemini-pro | google | 30724 | N/A | 1 | /v1/chat/completions | False |
+| ❌ | gemini-1.5-pro | google | 1048576 | N/A | 4 | /v1/chat/completions | False |
+| ✅ | gemini-pro | google | 30724 | N/A | 1 | /v1/chat/completions | False |
 | ❌ | gemini-pro-vision | google | 30724 | N/A | 1 | /v1/chat/completions | False |
 | ✅ | palm-2 | google | 8192 | N/A | 2 | /v1/chat/completions | False |
 | ✅ | mistral-large | mistralai | - | Mistral's Latest and Largest Model. | 4 | /v1/chat/completions | False |
